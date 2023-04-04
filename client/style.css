@@ -172,3 +172,15 @@
 .logout_box{
     margin-right: 25px;
 }
+
+footer{
+    margin-top: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: maroon;
+    color: white;
+    height: 75px;
+}
+
+

@@ -13,8 +13,6 @@ let hour = 0
 let minute = 0
 let cron
 
-clockoutBtn.style.display = 'none'
-
 const clockIn = () =>{
     let d = new Date().toLocaleTimeString()
     time.innerHTML = d
@@ -26,6 +24,7 @@ const clockIn = () =>{
   }
 
 const clockOut = () =>{
+  
   let d = new Date().toLocaleTimeString()
   time.innerHTML = d
   alert(`clocked in at ${d}`)
@@ -50,6 +49,8 @@ const pause = ()=>{
   //on page load check if user is logged in
 
   const checkIfLogged = ()=>{
+    clockoutBtn.style.display = 'none'
+    time.innerHTML = '0.00'
     let useremail = window.localStorage.getItem('user')
     if(useremail){
         //do the stuff you need to do if there is a valid user
