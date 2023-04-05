@@ -109,6 +109,15 @@
     margin-left: 25px;
 }
 
+.title_txt:hover{
+    cursor: pointer;
+}
+
+.title_txt a{
+    color: white;
+    text-decoration: none;
+}
+
 .create_box{
     margin: 25px;
     display: flex;

@@ -7,8 +7,9 @@ const enterUserPassword = document.querySelector('#enter_user_password')
 const reenterUserPassword = document.querySelector('#reenter_user_password')
 const createEmail = document.querySelector('#create_email')
 const createBtn = document.querySelector('#create_btn')
+const titleTxt = document.querySelector('.title_txt')
 
-
+//this is using the form on the frontend to submit the info to the backend through event listeners for the creation of users
 if (createUserForm) {
     
     createUserForm.addEventListener('submit', (event)=>{
@@ -20,7 +21,7 @@ if (createUserForm) {
         }
     
         axios.post(`/newuser`, myBody).then((res)=>{
-        alert(res.data);
+        alert('New account created!');
         window.location = '../pages/index.html'
         }).catch((err)=>{
             console.log(err);
@@ -28,6 +29,8 @@ if (createUserForm) {
     
     })
 }
+
+//this is using the form on the frontend to submit the info to the backend through event listeners for loging in users
 if(loginForm){
     loginForm.addEventListener('submit', (event)=>{
         event.preventDefault()
@@ -48,3 +51,4 @@ if(loginForm){
         })
     })
   }
+

@@ -13,6 +13,7 @@ let hour = 0
 let minute = 0
 let cron
 
+//this is function that lets the user know what time they logged in at and starts the timer function then hides the clock in button and displays the clocked out button
 const clockIn = () =>{
     let d = new Date().toLocaleTimeString()
     time.innerHTML = d
@@ -23,20 +24,23 @@ const clockIn = () =>{
     clockoutBtn.style.display = 'block'
   }
 
+
+//this is a function that stops the timer function and states the time the user logged out and displays the clockin button and hides the logout button
 const clockOut = () =>{
-  
   let d = new Date().toLocaleTimeString()
   time.innerHTML = d
-  alert(`clocked in at ${d}`)
+  alert(`clocked out at ${d}`)
   pause()
   clockinBtn.style.display = 'block'
   clockoutBtn.style.display = 'none'
 }
 
+//this is the pause function that the clock out function uses
 const pause = ()=>{
   clearInterval(cron)
 }
 
+//this is the timer function that the clockin function uses to run it measures the time in minutes since the last time you logged in.
   const timer = ()=>{
     console.log('min passed');
     minute++
@@ -46,19 +50,19 @@ const pause = ()=>{
     totalTime.innerHTML = t
   }
 
-  //on page load check if user is logged in
+  //This checks that on page load if user is logged in
 
   const checkIfLogged = ()=>{
     clockoutBtn.style.display = 'none'
-    time.innerHTML = '0.00'
+    totalTime.innerHTML = '0.00'
     let useremail = window.localStorage.getItem('user')
     if(useremail){
-        //do the stuff you need to do if there is a valid user
+        //this stores the users data in local storage as long as they are logged in and then displays the email of the user
         welcomeUserTxt.innerHTML = window.localStorage.getItem('user')
         alert(useremail + ' has been logged in')
         totalTime.innerHTML = window.localStorage.getItem('hours')
     }else{
-        //do the stuff you need to do if someone reached this page without being logged in
+        //alerts the user that they are not logged in with a valid account
         alert('not logged in')
     }
   }
@@ -81,6 +85,5 @@ const pause = ()=>{
 
 
   checkIfLogged()
-  let timeUpdate
   timeUpdate = setInterval(()=> {timeUpdater()}, 1000)
   

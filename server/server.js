@@ -18,6 +18,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 })
 app.use(express.static(`${__dirname}/../client`))
 
+//this axios call makes sure that the username, password, and the repeat password are the same in order to make an account
 app.post('/newuser', (req,res)=>{
     let {useremail, password, repassword} = req.body
     if(repassword === password && useremail !== ''){
@@ -28,15 +29,18 @@ app.post('/newuser', (req,res)=>{
         `).then((dbRes)=>{
             res.status(200).send(dbRes[0])
         })
+    //This throws out an error when the username is null or empty
     }else if (useremail === ''){
         res.send('user name required')
+    //This is a catch to tell the user that the passwords do not match 
     }else{
         res.send('password do not match')
     }
     
 })
 
-app.get(`/user/:email/:password`, (req,res)=>{
+//this axios call makes sure that the username and password are in the data base then logs the user in
+app.get(`/user/:email/:password/`, (req,res)=>{
     console.log(req.params);
     let {email, password} = req.params
 
